@@ -5,8 +5,6 @@ class UserModel extends UserEntity {
     super.id,
     required super.name,
     required super.email,
-    super.password,
-    super.confirmPassword,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -14,7 +12,6 @@ class UserModel extends UserEntity {
       id: json['id'],
       name: json['name'],
       email: json['email'],
-      password: json['password'],
     );
   }
 
@@ -23,8 +20,6 @@ class UserModel extends UserEntity {
     data['id'] = id;
     data['name'] = name;
     data['email'] = email;
-    data['password'] = password;
-    data['password_confirmation'] = confirmPassword;
     return data;
   }
 }

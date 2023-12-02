@@ -8,7 +8,7 @@ class AuthInitial extends AuthState {}
 class AuthRegisterLoadingState extends AuthState {}
 
 class AuthRegisterSuccessState extends AuthState {
-  final UserEntity user;
+  final AuthEntity user;
 
   AuthRegisterSuccessState(this.user);
 }
@@ -22,7 +22,7 @@ class AuthRegisterErrorState extends AuthState {
 class AuthLoginLoadingState extends AuthState {}
 
 class AuthLoginSuccessState extends AuthState {
-  final UserEntity user;
+  final AuthEntity user;
 
   AuthLoginSuccessState(this.user);
 }

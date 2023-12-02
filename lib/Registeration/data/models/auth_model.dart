@@ -15,4 +15,12 @@ class AuthModel extends AuthEntity {
       expiresAt: json['expires_at'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['access_token'] = token;
+    data['expires_at'] = expiresAt;
+    data['user'] = user;
+    return data;
+  }
 }

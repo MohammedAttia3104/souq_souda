@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:souq_souda/Registeration/presentation/controllers/auth_cubit.dart';
+import 'package:souq_souda/Registeration/presentation/screens/login/login_screen.dart';
+import 'package:souq_souda/Registeration/presentation/screens/register/register_screen.dart';
 import 'package:souq_souda/config/routes/app_routes.dart';
 import 'package:souq_souda/config/themes/app_themes.dart';
 import 'package:souq_souda/core/bloc_observer.dart';

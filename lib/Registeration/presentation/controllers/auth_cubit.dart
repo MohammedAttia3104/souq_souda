@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:souq_souda/Registeration/data/models/auth_model.dart';
+import 'package:souq_souda/Registeration/domain/entities/auth_entity.dart';
 import 'package:souq_souda/Registeration/domain/entities/user_entity.dart';
 import 'package:souq_souda/Registeration/domain/use_cases/login_use_case.dart';
 import 'package:souq_souda/Registeration/domain/use_cases/sign_up_use_case.dart';
@@ -15,11 +17,14 @@ class AuthCubit extends Cubit<AuthState> {
     this.signUpUseCase,
   ) : super(AuthInitial());
 
-  void getAuthLogin(UserEntity user) async {
+  void getAuthLogin({
+    required String email,
+    required String password,
+  }) async {
     emit(AuthLoginLoadingState());
     final result = await loginUseCase(LoginParameters(
-      user.email,
-      user.password.toString(),
+      email,
+      password,
     ));
     result.fold(
       (l) => emit(AuthLoginErrorState(l.message)),
@@ -27,14 +32,19 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  void getAuthRegister(UserEntity user) async {
+  void getAuthRegister({
+    required String name,
+    required String email,
+    required String password,
+    required String confirmPassword,
+  }) async {
     emit(AuthLoginLoadingState());
     final result = await signUpUseCase(
       SignUpParameters(
-        user.name,
-        user.email,
-        user.password.toString(),
-        user.confirmPassword.toString(),
+        name,
+        email,
+        password,
+        confirmPassword,
       ),
     );
     result.fold(
