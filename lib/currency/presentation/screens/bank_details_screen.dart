@@ -6,12 +6,9 @@ import 'package:souq_souda/core/constants/app_colors.dart';
 import 'package:souq_souda/core/constants/app_strings.dart';
 import 'package:souq_souda/core/constants/app_styles.dart';
 import 'package:souq_souda/core/constants/size_config.dart';
-import 'package:souq_souda/core/widgets/custom_vertical_divider.dart';
 import 'package:souq_souda/currency/presentation/widgets/bank/bank_container_details.dart';
 import 'package:souq_souda/currency/presentation/widgets/bank/bank_currency_price_container.dart';
-import 'package:souq_souda/currency/presentation/widgets/currency/drop_down_details.dart';
 import 'package:souq_souda/currency/presentation/widgets/how_much_in_black_market.dart';
-import 'package:souq_souda/currency/presentation/widgets/price_widget.dart';
 
 class BankDetailsScreen extends StatelessWidget {
   const BankDetailsScreen({super.key});

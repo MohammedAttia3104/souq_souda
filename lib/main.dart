@@ -7,10 +7,8 @@ import 'package:souq_souda/core/bloc_observer.dart';
 import 'package:souq_souda/core/services/services_locator.dart';
 import 'package:souq_souda/currency/presentation/controllers/bank/bank_cubit.dart';
 import 'package:souq_souda/currency/presentation/controllers/currency/currency_details_cubit.dart';
-import 'package:souq_souda/currency/presentation/screens/bank_details_screen.dart';
 import 'package:souq_souda/gold/presentation/controllers/company/company_cubit.dart';
 import 'package:souq_souda/gold/presentation/controllers/gold/gold_cubit.dart';
-import 'package:souq_souda/gold/presentation/screens/test_screen.dart';
 import 'package:souq_souda/layout/controllers/layout_cubit.dart';
 import 'package:souq_souda/layout/screens/layout_screen.dart';
 

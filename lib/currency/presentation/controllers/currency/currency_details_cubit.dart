@@ -1,9 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:souq_souda/core/usecase/base_use_case.dart';
-import 'package:souq_souda/currency/domain/entities/bank_entity.dart';
 import 'package:souq_souda/currency/domain/entities/currency_entity.dart';
-import 'package:souq_souda/currency/domain/use_cases/get_banks_use_case.dart';
 import 'package:souq_souda/currency/domain/use_cases/get_currency_details_use_case.dart';
 
 part 'currency_details_state.dart';

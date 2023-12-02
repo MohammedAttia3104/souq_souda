@@ -1,9 +1,7 @@
 import 'package:souq_souda/core/errors/exceptions.dart';
 import 'package:souq_souda/core/networks/api_constants.dart';
 import 'package:souq_souda/core/networks/error_message_model.dart';
-import 'package:souq_souda/currency/data/models/bank_model.dart';
 import 'package:souq_souda/currency/data/models/currency_model.dart';
-import 'package:souq_souda/currency/domain/entities/bank_entity.dart';
 import 'package:souq_souda/currency/domain/entities/currency_entity.dart';
 import 'package:dio/dio.dart';
 

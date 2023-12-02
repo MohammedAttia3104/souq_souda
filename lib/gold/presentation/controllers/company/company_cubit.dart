@@ -14,11 +14,9 @@ class CompanyCubit extends Cubit<CompanyState> {
   void getCompanies() async {
     emit(CompanyLoadingState());
     final result = await getCompanyUseCase(const NoParameters());
-    print(result);
-    print('cubit done');
     result.fold(
       (l) => emit(CompanyErrorState(l.message)),
-      (r) => CompanySuccessState(r),
+      (r) => emit(CompanySuccessState(r)),
     );
   }
 }

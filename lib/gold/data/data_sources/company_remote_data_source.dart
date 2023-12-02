@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:souq_souda/core/errors/exceptions.dart';
 import 'package:souq_souda/core/networks/api_constants.dart';
 import 'package:souq_souda/core/networks/error_message_model.dart';
