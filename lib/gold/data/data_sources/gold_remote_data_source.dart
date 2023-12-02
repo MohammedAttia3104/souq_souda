@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:souq_souda/core/errors/exceptions.dart';
 import 'package:souq_souda/core/networks/api_constants.dart';
 import 'package:souq_souda/core/networks/error_message_model.dart';
@@ -14,7 +13,6 @@ class GoldRemoteDataSource implements BaseGoldRemoteDataSource {
   @override
   Future<List<GoldEntity>> getGold() async {
     final response = await Dio().get(ApiConstants.goldPath);
-    debugPrint(response.data);
     if (response.statusCode == 200) {
       return (response.data as List).map((e) => GoldModel.fromJson(e)).toList();
     } else {

@@ -9,9 +9,6 @@ import 'package:dio/dio.dart';
 
 abstract class BaseCurrencyRemoteDataSource {
   Future<List<CurrencyEntity>> getCurrencyDetails();
-
-  Future<List<BankEntity>> getBanks();
-
 }
 
 class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
@@ -22,18 +19,6 @@ class CurrencyRemoteDataSource implements BaseCurrencyRemoteDataSource {
       return (response.data as List)
           .map((e) => CurrencyModel.fromJson(e))
           .toList();
-    } else {
-      throw ServerException(
-        errorMessageModel: ErrorMessageModel.fromJson(response.data),
-      );
-    }
-  }
-
-  @override
-  Future<List<BankEntity>> getBanks() async {
-    final response = await Dio().get(ApiConstants.banksPath);
-    if (response.statusCode == 200) {
-      return (response.data as List).map((e) => BankModel.fromJson(e)).toList();
     } else {
       throw ServerException(
         errorMessageModel: ErrorMessageModel.fromJson(response.data),

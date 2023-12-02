@@ -52,6 +52,7 @@ dependencies:
   fl_chart: 
 #for check about responsive
   device_preview:
+  expandable:
 
   cupertino_icons: ^1.0.2
 

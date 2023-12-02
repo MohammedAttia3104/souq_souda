@@ -56,4 +56,10 @@ abstract class AppStrings {
   static const String lastUpdate = 'last update';
   static const String buy = 'Buy';
   static const String sell = 'Sell';
+  ///Gold Screen
+  static const String ingots = 'السبائك';
+  static const String coins = 'العملات';
+  ///Bank Details Screen
+  static const String egyCode = 'EGP';
+  static const String calculator = 'الحاسبة';
 }

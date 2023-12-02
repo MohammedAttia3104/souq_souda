@@ -5,7 +5,7 @@ import 'package:souq_souda/core/constants/app_colors.dart';
 import 'package:souq_souda/core/constants/app_strings.dart';
 import 'package:souq_souda/core/constants/app_styles.dart';
 import 'package:souq_souda/core/constants/size_config.dart';
-import 'package:souq_souda/currency/presentation/controllers/currency_details_cubit.dart';
+import 'package:souq_souda/currency/presentation/controllers/currency/currency_details_cubit.dart';
 
 class PriceAndUpdateDetails extends StatelessWidget {
   const PriceAndUpdateDetails({super.key});

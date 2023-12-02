@@ -10,11 +10,9 @@ part 'currency_details_state.dart';
 
 class CurrencyDetailsCubit extends Cubit<CurrencyDetailsState> {
   final GetCurrencyDetailsUseCase getCurrencyDetailsUseCase;
-  final GetBanksUseCase getBanksUseCase;
 
   CurrencyDetailsCubit(
     this.getCurrencyDetailsUseCase,
-    this.getBanksUseCase,
   ) : super(CurrencyDetailsInitial());
 
   void getCurrencyDetails() async {
@@ -23,15 +21,6 @@ class CurrencyDetailsCubit extends Cubit<CurrencyDetailsState> {
     result.fold(
       (l) => emit(CurrencyDetailsErrorState(error: l.message)),
       (r) => emit(CurrencyDetailsSuccessState(r)),
-    );
-  }
-
-  void getBanks() async {
-    emit(BanksLoadingState());
-    final result = await getBanksUseCase(const NoParameters());
-    result.fold(
-      (l) => emit(BanksErrorState(error: l.message)),
-      (r) => emit(BanksSuccessState(r)),
     );
   }
 }

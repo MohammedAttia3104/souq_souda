@@ -1,7 +1,5 @@
 import 'package:souq_souda/currency/data/models/price_model.dart';
-import 'package:souq_souda/currency/domain/entities/bank_price_entity.dart';
 import 'package:souq_souda/currency/domain/entities/currency_entity.dart';
-import 'package:souq_souda/currency/domain/entities/price_entity.dart';
 
 class CurrencyModel extends CurrencyEntity {
   const CurrencyModel({

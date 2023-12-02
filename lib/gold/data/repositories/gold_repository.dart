@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter/widgets.dart';
 import 'package:souq_souda/core/errors/exceptions.dart';
 import 'package:souq_souda/core/errors/failure.dart';
 import 'package:souq_souda/gold/data/data_sources/gold_remote_data_source.dart';

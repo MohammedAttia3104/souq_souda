@@ -6,7 +6,7 @@ import 'package:souq_souda/core/constants/app_styles.dart';
 import 'package:souq_souda/core/networks/api_constants.dart';
 import 'package:souq_souda/core/widgets/cached_image.dart';
 import 'package:souq_souda/currency/domain/entities/currency_entity.dart';
-import 'package:souq_souda/currency/presentation/controllers/currency_details_cubit.dart';
+import 'package:souq_souda/currency/presentation/controllers/currency/currency_details_cubit.dart';
 
 class DropDownDetails extends StatefulWidget {
   const DropDownDetails({super.key});
@@ -35,10 +35,9 @@ class _DropDownDetailsState extends State<DropDownDetails> {
         }
         if (state is CurrencyDetailsSuccessState) {
           CurrencyEntity? currency = state.currencies[0];
-          debugPrint(ApiConstants.storagePath + state.currencies[0].icon);
           return SizedBox(
             height: 20.0.h,
-            width: 250.0.w,
+            //width: 250.0.w,
             child: DropdownButtonFormField(
               value: currency,
               elevation: 0,
@@ -47,14 +46,15 @@ class _DropDownDetailsState extends State<DropDownDetails> {
                   return DropdownMenuItem<CurrencyEntity>(
                     value: value,
                     child: Row(
-                      mainAxisSize: MainAxisSize.min,
                       children: [
                         CachedImage(
                           imagePath: ApiConstants.storagePath + value.icon,
                           width: 20.0.w,
                           height: 20.0.h,
                         ),
-                        SizedBox(width: 8.0.w),
+                        SizedBox(
+                          width: 8.0.w,
+                        ),
                         Text(
                           value.name,
                           style: AppStyles.style10Bold,
@@ -72,29 +72,13 @@ class _DropDownDetailsState extends State<DropDownDetails> {
                 });
               },
               decoration: InputDecoration(
-                fillColor: AppColors.kWhiteColor,
+                fillColor: AppColors.kYellowNorColor,
                 filled: true,
-                focusedBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppColors.kWhiteColor,
-                  ),
-                ),
-                border: const UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppColors.kWhiteColor,
-                  ),
-                ),
-                disabledBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppColors.kWhiteColor,
-                  ),
-                ),
-                enabledBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppColors.kWhiteColor,
-                  ),
-                ),
-                contentPadding: EdgeInsets.symmetric(horizontal: 5.0.w),
+                focusedBorder: InputBorder.none,
+                border: InputBorder.none,
+                disabledBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                contentPadding: EdgeInsets.symmetric(horizontal: 20.0.w),
               ),
             ),
           );

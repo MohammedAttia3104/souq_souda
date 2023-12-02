@@ -1,31 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:souq_souda/core/constants/app_assets.dart';
 import 'package:souq_souda/core/constants/app_colors.dart';
 import 'package:souq_souda/core/networks/api_constants.dart';
-import 'package:souq_souda/currency/presentation/controllers/currency_details_cubit.dart';
+import 'package:souq_souda/core/widgets/circular_indicator.dart';
+import 'package:souq_souda/currency/presentation/controllers/bank/bank_cubit.dart';
 import 'package:souq_souda/core/widgets/single_grid_item_details.dart';
-import 'package:souq_souda/currency/presentation/widgets/favorite_bank_widget.dart';
 
 class BankItemGridView extends StatelessWidget {
   const BankItemGridView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CurrencyDetailsCubit, CurrencyDetailsState>(
+    return BlocBuilder<BankCubit, BankState>(
       buildWhen: (previous, current) {
         return previous != current && current is BanksSuccessState;
       },
       builder: (context, state) {
         if (state is BanksLoadingState) {
-          return SizedBox(
+          return CircularIndicator(
             height: 100.0.h,
-            child: const Center(
-              child: CircularProgressIndicator(
-                color: AppColors.kYellowNorColor,
-              ),
-            ),
           );
         }
         if (state is BanksSuccessState) {
@@ -43,19 +37,22 @@ class BankItemGridView extends StatelessWidget {
                     ApiConstants.storagePath + state.banks[index].icon,
                 itemName: state.banks[index].name,
                 isFavoriteAvailable: true,
+                buyPrice: 30.5,
+                sellPrice: 30.5,
+                containerBackgroundColor:
+                    state.banks[index].name == 'Central Bank of Egypt'
+                        ? AppColors.kYellowNorColor
+                        : AppColors.kGreyBehindColor,
               ),
             ),
           );
         }
-        return SizedBox(
+        return CircularIndicator(
           height: 100.0.h,
-          child: const Center(
-            child: CircularProgressIndicator(
-              color: AppColors.kYellowNorColor,
-            ),
-          ),
         );
       },
     );
   }
 }
+
+///ToDo : Handle Central Bank fonts and Colors

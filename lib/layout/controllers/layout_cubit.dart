@@ -1,8 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:souq_souda/core/constants/app_assets.dart';
-import 'package:souq_souda/core/constants/app_colors.dart';
 import 'package:souq_souda/core/constants/app_strings.dart';
 import 'package:souq_souda/currency/presentation/screens/currency_screen.dart';
 import 'package:souq_souda/gold/presentation/screens/gold_screen.dart';

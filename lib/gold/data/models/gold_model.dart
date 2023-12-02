@@ -1,7 +1,5 @@
-import 'package:souq_souda/currency/data/models/price_model.dart';
 import 'package:souq_souda/gold/data/models/gold_price_model.dart';
 import 'package:souq_souda/gold/domain/entities/gold_entity.dart';
-import 'package:souq_souda/gold/domain/entities/gold_price_entity.dart';
 
 class GoldModel extends GoldEntity {
   const GoldModel({

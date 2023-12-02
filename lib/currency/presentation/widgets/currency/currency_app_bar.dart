@@ -74,6 +74,5 @@ class CurrencyAppBar extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }

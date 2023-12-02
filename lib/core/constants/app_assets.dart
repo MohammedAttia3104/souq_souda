@@ -9,4 +9,7 @@ abstract class AppAssets{
   static const String loveIconImage = "assets/images/love_icon.png";
   static const String combinedShape = "assets/images/combined_shape.png";
   static const String notificationIcon = "assets/images/notification_icon.png";
+  static const String calculateIcon = "assets/images/calculate_icon.png";
+  static const String egyIcon = "assets/images/sisi_image.png";
+  static const String blueCalculatorIcon = "assets/images/blue_calculator_icon.png";
 }

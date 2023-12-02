@@ -22,14 +22,4 @@ class CurrencyRepository extends BaseCurrencyRepository {
       return Left(ServerFailure(failure.errorMessageModel.statusMessage));
     }
   }
-
-  @override
-  Future<Either<Failure, List<BankEntity>>> getBanks() async {
-    final result = await baseCurrencyRemoteDataSource.getBanks();
-    try {
-      return Right(result);
-    } on ServerException catch (failure) {
-      return Left(ServerFailure(failure.errorMessageModel.statusMessage));
-    }
-  }
 }

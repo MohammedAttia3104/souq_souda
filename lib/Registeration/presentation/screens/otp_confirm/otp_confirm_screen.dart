@@ -19,7 +19,7 @@ class OtpConfirmScreen extends StatelessWidget {
           ),
           child: Column(
             children: [
-              const BackAppBar(
+               BackAppBar(
                 barTitle: AppStrings.passwordRecovery,
               ),
               SizedBox(

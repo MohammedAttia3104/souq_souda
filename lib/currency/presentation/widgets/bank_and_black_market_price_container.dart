@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:souq_souda/core/constants/app_colors.dart';
-import 'package:souq_souda/core/constants/app_strings.dart';
-import 'package:souq_souda/core/constants/app_styles.dart';
 import 'package:souq_souda/core/constants/size_config.dart';
-import 'package:souq_souda/core/widgets/custom_vertical_divider.dart';
-import 'package:souq_souda/currency/presentation/widgets/drop_down_details.dart';
-import 'package:souq_souda/currency/presentation/widgets/prices_in_bank_and_black_market.dart';
+import 'package:souq_souda/currency/presentation/widgets/currency/drop_down_details.dart';
+import 'package:souq_souda/currency/presentation/widgets/prices_in_bank_and_black_market_last_update.dart';
 
 class BankAndBlackMarketPriceContainer extends StatelessWidget {
   const BankAndBlackMarketPriceContainer({super.key});
@@ -37,7 +34,7 @@ class BankAndBlackMarketPriceContainer extends StatelessWidget {
             SizedBox(
               height: 25.0.h,
             ),
-            const PricesInBankAndBlackMarket(),
+            const PricesInBankAndBlackMarketLastUpdate(),
           ],
         ),
       ),

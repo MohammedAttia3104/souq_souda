@@ -6,7 +6,9 @@ import 'package:souq_souda/core/constants/app_styles.dart';
 import 'package:souq_souda/core/constants/size_config.dart';
 import 'package:souq_souda/core/widgets/cached_image.dart';
 import 'package:souq_souda/core/widgets/custom_vertical_divider.dart';
+import 'package:souq_souda/core/widgets/share_widget.dart';
 import 'package:souq_souda/currency/presentation/widgets/favorite_bank_widget.dart';
+import 'package:souq_souda/currency/presentation/widgets/price_widget.dart';
 
 class SingleGridItemDetails extends StatelessWidget {
   SingleGridItemDetails({
@@ -14,11 +16,17 @@ class SingleGridItemDetails extends StatelessWidget {
     required this.itemImagePath,
     required this.itemName,
     this.isFavoriteAvailable = false,
+    this.containerBackgroundColor = AppColors.kGreyBehindColor,
+    required this.buyPrice,
+    required this.sellPrice,
   });
 
   final String itemImagePath;
   final String itemName;
+  final double buyPrice;
+  final double sellPrice;
   bool isFavoriteAvailable;
+  Color containerBackgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +37,7 @@ class SingleGridItemDetails extends StatelessWidget {
         borderRadius: BorderRadius.all(
           Radius.circular(8.0.r),
         ),
-        color: AppColors.kGreyBehindColor,
+        color: containerBackgroundColor,
         border: Border.all(
           color: AppColors.kGreySubTitleColor,
           width: 1,
@@ -54,14 +62,7 @@ class SingleGridItemDetails extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.share_outlined,
-                            color: AppColors.kWhiteColor,
-                            size: 20.0.r,
-                          ),
-                        ),
+                        const ShareWidget(),
                         Container(
                           height: 47.0.h,
                           width: 47.0.w,
@@ -77,7 +78,9 @@ class SingleGridItemDetails extends StatelessWidget {
                         ),
                         isFavoriteAvailable
                             ? const BankFavoriteWidget()
-                            : const SizedBox(),
+                            : SizedBox(
+                                width: 45.0.w,
+                              ),
                       ],
                     ),
                   ),
@@ -101,47 +104,17 @@ class SingleGridItemDetails extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Column(
-                    children: [
-                      Text(
-                        AppStrings.buy,
-                        style: AppStyles.style10Bold.copyWith(
-                          color: AppColors.kGreyColor,
-                          fontSize: AppFonts.fSize8,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(
-                        height: 8.0.h,
-                      ),
-                      Text(
-                        '30.5 EGP',
-                        style: AppStyles.style9Extra,
-                      ),
-                    ],
+                  PriceWidget(
+                    price: 30.5,
+                    buyOrSell: AppStrings.buy,
                   ),
                   CustomVerticalDivider(
                     horizontalPadding: 26.0.w,
                     height: 18.0.h,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        AppStrings.sell,
-                        style: AppStyles.style10Bold.copyWith(
-                          color: AppColors.kGreyColor,
-                          fontSize: AppFonts.fSize8,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 8.0.h,
-                      ),
-                      Text(
-                        '30.5 EGP',
-                        style: AppStyles.style9Extra,
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+                  PriceWidget(
+                    price: 30.5,
+                    buyOrSell: AppStrings.sell,
                   ),
                 ],
               ),

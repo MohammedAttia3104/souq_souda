@@ -1,8 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:souq_souda/currency/domain/entities/bank_price_entity.dart';
-import 'package:souq_souda/currency/domain/entities/black_market_entity.dart';
-import 'package:souq_souda/currency/domain/entities/live_market_entity.dart';
-import 'package:souq_souda/currency/domain/entities/price_entity.dart';
+import 'package:souq_souda/currency/domain/entities/currency_price_entity.dart';
 
 class CurrencyEntity extends Equatable {
   final int id;
@@ -12,9 +9,9 @@ class CurrencyEntity extends Equatable {
   final String code;
   final String lastUpdate;
   final String updateAt;
-  final List<PriceEntity> bankPrices;
-  final List<PriceEntity> blackMarketPrices;
-  final List<PriceEntity> liveMarketPrices;
+  final List<CurrencyPriceEntity> bankPrices;
+  final List<CurrencyPriceEntity> blackMarketPrices;
+  final List<CurrencyPriceEntity> liveMarketPrices;
 
   const CurrencyEntity({
     required this.id,

@@ -3,6 +3,16 @@ import 'package:souq_souda/core/constants/app_colors.dart';
 import 'package:souq_souda/core/constants/size_config.dart';
 
 abstract class AppStyles {
+  static TextStyle style7Bold = TextStyle(
+    fontSize: AppFonts.fSize7,
+    fontWeight: FontWeight.w700,
+    color: AppColors.kBlackNorColor,
+  );
+  static TextStyle style8Bold = TextStyle(
+    fontSize: AppFonts.fSize8,
+    fontWeight: FontWeight.w700,
+    color: AppColors.kBlackNorColor,
+  );
   static TextStyle style9Extra = TextStyle(
     fontSize: AppFonts.fSize9,
     fontWeight: FontWeight.w800,

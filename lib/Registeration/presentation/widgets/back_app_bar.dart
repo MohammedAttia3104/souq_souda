@@ -5,12 +5,14 @@ import 'package:souq_souda/core/constants/app_styles.dart';
 import 'package:souq_souda/core/constants/size_config.dart';
 
 class BackAppBar extends StatelessWidget {
-  const BackAppBar({
+  BackAppBar({
     super.key,
     required this.barTitle,
+    this.btnBackgroundColor = AppColors.kGreyBehindColor,
   });
 
   final String barTitle;
+  Color btnBackgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class BackAppBar extends StatelessWidget {
               height: 40.0.h,
               width: 40.0.w,
               decoration: BoxDecoration(
-                color: AppColors.kGreyBehindColor,
+                color: btnBackgroundColor,
                 borderRadius: BorderRadius.all(
                   Radius.circular(
                     16.0.r,

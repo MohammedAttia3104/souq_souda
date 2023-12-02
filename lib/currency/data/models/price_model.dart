@@ -1,6 +1,6 @@
-import 'package:souq_souda/currency/domain/entities/price_entity.dart';
+import 'package:souq_souda/currency/domain/entities/currency_price_entity.dart';
 
-class PriceModel extends PriceEntity {
+class PriceModel extends CurrencyPriceEntity {
   const PriceModel({
     required super.id,
     required super.bankId,

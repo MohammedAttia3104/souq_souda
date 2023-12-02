@@ -48,7 +48,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
           ),
           child: Column(
             children: [
-              const BackAppBar(
+               BackAppBar(
                 barTitle: AppStrings.createNewPassword,
               ),
               SizedBox(

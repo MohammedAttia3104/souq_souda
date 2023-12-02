@@ -1,6 +1,7 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class AppFonts {
+  static var fSize7 = 7.0.sp;
   static var fSize8 = 8.0.sp;
   static var fSize9 = 9.0.sp;
   static var fSize10 = 10.0.sp;
@@ -16,10 +17,13 @@ abstract class AppFonts {
 
 abstract class AppPadding {
   ///Height
+  static var padding5h = 5.0.h;
+  static var padding6h = 6.0.h;
   static var padding8h = 8.0.h;
   static var padding9h = 9.0.h;
   static var padding10h = 10.0.h;
   static var padding11h = 11.0.h;
+  static var padding11hh = 11.5.h;
   static var padding14h = 14.0.h;
   static var padding18h = 18.0.h;
   static var padding19h = 19.0.h;
@@ -27,6 +31,7 @@ abstract class AppPadding {
   static var padding26h = 26.0.h;
   static var padding30h = 30.0.h;
   static var padding32h = 32.0.h;
+  static var padding35h = 35.0.h;
   static var padding24h = 24.0.h;
   static var padding43h = 43.0.h;
   static var padding47h = 47.0.h;
@@ -36,6 +41,7 @@ abstract class AppPadding {
   static var padding64h = 64.0.h;
   static var padding70h = 70.0.h;
   static var padding100h = 100.0.h;
+  static var padding112h = 112.0.h;
   static var padding120h = 120.0.h;
   static var padding170h = 170.0.h;
   static var padding250h = 250.0.h;
@@ -45,11 +51,14 @@ abstract class AppPadding {
 
   ///Width
   static var padding4w = 4.0.w;
+  static var padding6w = 6.0.w;
   static var padding12w = 12.0.w;
   static var padding14w = 14.0.w;
   static var padding16w = 16.0.w;
   static var padding24w = 24.0.w;
+  static var padding48w = 48.0.w;
 }
-abstract class CustomConfiguration{
-  static var dividerWidth = 1.0.w;
+
+abstract class CustomConfiguration {
+  static var dividerWidth = 1.5.w;
 }

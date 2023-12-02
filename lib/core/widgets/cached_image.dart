@@ -21,7 +21,7 @@ class CachedImage extends StatelessWidget {
       width: width,
       height: height,
       color: AppColors.kWhiteColor,
-      fit: BoxFit.contain,
+      fit: BoxFit.fill,
       imageBuilder: (context, imageProvider) => Container(
         decoration: BoxDecoration(
           image: DecorationImage(

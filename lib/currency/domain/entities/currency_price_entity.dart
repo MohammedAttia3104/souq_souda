@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class PriceEntity extends Equatable {
+class CurrencyPriceEntity extends Equatable {
   final int id;
   final int? bankId;
   final int currencyId;
@@ -12,7 +12,7 @@ class PriceEntity extends Equatable {
   final int? hour;
   final double? price;
 
-  const PriceEntity({
+  const CurrencyPriceEntity({
     required this.id,
     required this.bankId,
     required this.currencyId,

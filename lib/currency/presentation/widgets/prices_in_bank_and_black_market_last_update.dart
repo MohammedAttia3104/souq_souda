@@ -6,8 +6,8 @@ import 'package:souq_souda/core/constants/app_styles.dart';
 import 'package:souq_souda/core/constants/size_config.dart';
 import 'package:souq_souda/core/widgets/custom_vertical_divider.dart';
 
-class PricesInBankAndBlackMarket extends StatelessWidget {
-  const PricesInBankAndBlackMarket({super.key});
+class PricesInBankAndBlackMarketLastUpdate extends StatelessWidget {
+  const PricesInBankAndBlackMarketLastUpdate({super.key});
 
   @override
   Widget build(BuildContext context) {

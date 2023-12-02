@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:souq_souda/config/routes/routes_name.dart';
 
 abstract class AppRouter {
   static Route? generateRoute(RouteSettings settings) {
