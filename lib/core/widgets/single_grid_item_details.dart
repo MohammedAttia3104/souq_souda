@@ -7,7 +7,7 @@ import 'package:souq_souda/core/constants/size_config.dart';
 import 'package:souq_souda/core/widgets/cached_image.dart';
 import 'package:souq_souda/core/widgets/custom_vertical_divider.dart';
 import 'package:souq_souda/core/widgets/share_widget.dart';
-import 'package:souq_souda/currency/presentation/widgets/favorite_bank_widget.dart';
+import 'package:souq_souda/core/widgets/favorite_widget.dart';
 import 'package:souq_souda/currency/presentation/widgets/price_widget.dart';
 
 class SingleGridItemDetails extends StatelessWidget {
@@ -17,16 +17,14 @@ class SingleGridItemDetails extends StatelessWidget {
     required this.itemName,
     this.isFavoriteAvailable = false,
     this.containerBackgroundColor = AppColors.kGreyBehindColor,
-    required this.buyPrice,
-    required this.sellPrice,
+    required this.sellAndPriceWidget,
   });
 
   final String itemImagePath;
   final String itemName;
-  final double buyPrice;
-  final double sellPrice;
   bool isFavoriteAvailable;
   Color containerBackgroundColor;
+  Widget sellAndPriceWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +58,12 @@ class SingleGridItemDetails extends StatelessWidget {
                   child: SizedBox(
                     height: 47.0.h,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const ShareWidget(),
+                        SizedBox(
+                          width: 8.0.w,
+                        ),
                         Container(
                           height: 47.0.h,
                           width: 47.0.w,
@@ -75,6 +76,9 @@ class SingleGridItemDetails extends StatelessWidget {
                             height: 47.0.h,
                             width: 47.0.w,
                           ),
+                        ),
+                        SizedBox(
+                          width: 8.0.w,
                         ),
                         isFavoriteAvailable
                             ? const BankFavoriteWidget()
@@ -101,27 +105,45 @@ class SingleGridItemDetails extends StatelessWidget {
               SizedBox(
                 height: AppPadding.padding9h,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  PriceWidget(
-                    price: 30.5,
-                    buyOrSell: AppStrings.buy,
-                  ),
-                  CustomVerticalDivider(
-                    horizontalPadding: 26.0.w,
-                    height: 18.0.h,
-                  ),
-                  PriceWidget(
-                    price: 30.5,
-                    buyOrSell: AppStrings.sell,
-                  ),
-                ],
+              SizedBox(
+                child: sellAndPriceWidget,
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class SellAndBuyPriceWidget extends StatelessWidget {
+  final double buyPrice;
+  final double sellPrice;
+
+  const SellAndBuyPriceWidget({
+    super.key,
+    required this.buyPrice,
+    required this.sellPrice,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        PriceWidget(
+          price: buyPrice,
+          buyOrSell: AppStrings.buy,
+        ),
+        CustomVerticalDivider(
+          horizontalPadding: 26.0.w,
+          height: 18.0.h,
+        ),
+        PriceWidget(
+          price: sellPrice,
+          buyOrSell: AppStrings.sell,
+        ),
+      ],
     );
   }
 }

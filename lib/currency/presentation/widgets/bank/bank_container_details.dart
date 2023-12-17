@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:souq_souda/core/constants/app_colors.dart';
 import 'package:souq_souda/core/constants/size_config.dart';
 import 'package:souq_souda/currency/presentation/widgets/bank/bank_image_and_name_builder.dart';
-import 'package:souq_souda/currency/presentation/widgets/prices_in_bank_and_black_market_last_update.dart';
+import 'package:souq_souda/currency/presentation/widgets/currency/prices_in_bank_and_black_market_last_update.dart';
 
 class BankContainerDetails extends StatelessWidget {
   const BankContainerDetails({super.key});

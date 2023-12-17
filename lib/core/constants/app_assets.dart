@@ -12,4 +12,6 @@ abstract class AppAssets{
   static const String calculateIcon = "assets/images/calculate_icon.png";
   static const String egyIcon = "assets/images/sisi_image.png";
   static const String blueCalculatorIcon = "assets/images/blue_calculator_icon.png";
+  static const String bankLoveIcon = "assets/images/bank_love_icon.png";
+  static const String shareIcon = "assets/images/share_icon.png";
 }

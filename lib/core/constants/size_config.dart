@@ -52,6 +52,7 @@ abstract class AppPadding {
   ///Width
   static var padding4w = 4.0.w;
   static var padding6w = 6.0.w;
+  static var padding8w = 8.0.w;
   static var padding12w = 12.0.w;
   static var padding14w = 14.0.w;
   static var padding16w = 16.0.w;

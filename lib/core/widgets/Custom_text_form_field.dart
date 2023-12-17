@@ -55,14 +55,15 @@ class CustomTextFormField extends StatelessWidget {
             controller: controller,
             keyboardType: keyBoardType,
             focusNode: focusNode,
-            onEditingComplete: () {},
+            onEditingComplete: onEditingComplete,
             style: AppStyles.txtFieldInputStyle,
             textInputAction: textInputAction,
             onChanged: (value) => debugPrint("onChanged : $value"),
             onSaved: (value) => debugPrint("onSaved : $value"),
             validator: validate,
-            onTapOutside: (event) =>
-                FocusManager.instance.primaryFocus?.unfocus(),
+            onTapOutside: (event) {
+              FocusManager.instance.primaryFocus?.unfocus();
+            },
             decoration: InputDecoration(
               hintText: hintText,
               hintTextDirection: TextDirection.rtl,

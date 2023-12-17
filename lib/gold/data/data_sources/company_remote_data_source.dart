@@ -13,7 +13,6 @@ class CompanyRemoteDataSource implements BaseCompanyRemoteDataSource {
   @override
   Future<List<CompanyEntity>> getCompanies() async {
     final response = await Dio().get(ApiConstants.companiesPath);
-    print(response.toString());
     if (response.statusCode == 200) {
       return (response.data as List)
           .map((e) => CompanyModel.fromJson(e))

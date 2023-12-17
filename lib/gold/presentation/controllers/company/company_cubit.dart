@@ -11,6 +11,7 @@ class CompanyCubit extends Cubit<CompanyState> {
 
   CompanyCubit(this.getCompanyUseCase) : super(CompanyInitial());
 
+  CompanyEntity? companyEntity;
   void getCompanies() async {
     emit(CompanyLoadingState());
     final result = await getCompanyUseCase(const NoParameters());

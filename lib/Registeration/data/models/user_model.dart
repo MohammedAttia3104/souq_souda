@@ -1,7 +1,7 @@
 import 'package:souq_souda/Registeration/domain/entities/user_entity.dart';
 
 class UserModel extends UserEntity {
-  UserModel({
+  const UserModel({
     super.id,
     required super.name,
     required super.email,

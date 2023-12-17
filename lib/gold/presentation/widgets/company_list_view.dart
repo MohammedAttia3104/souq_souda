@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:souq_souda/core/constants/app_colors.dart';
 import 'package:souq_souda/core/constants/app_styles.dart';
 import 'package:souq_souda/core/constants/size_config.dart';
@@ -9,8 +10,37 @@ import 'package:souq_souda/core/widgets/cached_image.dart';
 import 'package:souq_souda/core/widgets/circular_indicator.dart';
 import 'package:souq_souda/gold/presentation/controllers/company/company_cubit.dart';
 
-class CompanyListView extends StatelessWidget {
-  const CompanyListView({super.key});
+class CompanyListView extends StatefulWidget {
+  const CompanyListView({
+    super.key,
+  });
+
+  @override
+  State<CompanyListView> createState() => _CompanyListViewState();
+}
+
+class _CompanyListViewState extends State<CompanyListView> {
+  bool isClicked = false;
+  int clickedIndex = 0;
+  SharedPreferences? prefs; // Declare SharedPreferences instance
+
+  @override
+  void initState() {
+    super.initState();
+    initSharedPreferences();
+  }
+
+  // Initialize SharedPreferences
+  Future<void> initSharedPreferences() async {
+    prefs = await SharedPreferences.getInstance();
+  }
+
+  // Save currency ID to SharedPreferences
+  void saveCompanyId(int companyId) async {
+    if (prefs != null) {
+      await prefs!.setInt("companyId", companyId);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,32 +61,47 @@ class CompanyListView extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    Container(
-                      height: 46.0.h,
-                      width: 46.0.w,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: const ShapeDecoration(
-                        shape: OvalBorder(),
-                      ),
-                      child: CachedImage(
-                        imagePath: ApiConstants.storagePath +
-                            state.companies[index].image,
-                        height: 46.0.h,
-                        width: 46.0.w,
-                      ),
+                return FittedBox(
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isClicked = !isClicked;
+                        clickedIndex = index;
+                        saveCompanyId(state.companies[index].id);
+                        debugPrint(state.companies[index].id.toString());
+                      });
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 46.0.h,
+                          width: 46.0.w,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: const ShapeDecoration(
+                            shape: OvalBorder(),
+                          ),
+                          child: CachedImage(
+                            imagePath: ApiConstants.storageUrl(
+                              state.companies[index].image,
+                            ),
+                            height: 46.0.h,
+                            width: 46.0.w,
+                          ),
+                        ),
+                        SizedBox(
+                          height: AppPadding.padding6h,
+                        ),
+                        Text(
+                          state.companies[index].name,
+                          style: AppStyles.style12Bold.copyWith(
+                            color: index == clickedIndex
+                                ? AppColors.kYellowNorColor
+                                : AppColors.kWhiteColor,
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      height: AppPadding.padding6h,
-                    ),
-                    Text(
-                      state.companies[index].name,
-                      style: AppStyles.style12Bold.copyWith(
-                        color: AppColors.kWhiteColor,
-                      ),
-                    ),
-                  ],
+                  ),
                 );
               },
               separatorBuilder: (context, index) {
@@ -71,49 +116,5 @@ class CompanyListView extends StatelessWidget {
         return CircularIndicator(height: 40.0.h);
       },
     );
-    // return SizedBox(
-    //   height: 71.0.h,
-    //   width: double.infinity,
-    //   child: ListView.separated(
-    //     scrollDirection: Axis.horizontal,
-    //     physics: const BouncingScrollPhysics(),
-    //     shrinkWrap: true,
-    //     itemBuilder: (context, index) {
-    //       return Column(
-    //         children: [
-    //           Container(
-    //             height: 46.0.h,
-    //             width: 46.0.w,
-    //             clipBehavior: Clip.antiAlias,
-    //             decoration: const ShapeDecoration(
-    //               shape: OvalBorder(),
-    //             ),
-    //             child: CachedImage(
-    //               imagePath:
-    //                   "${ApiConstants.storagePath}gold-companies/May2023/PXFhLJS88eT3xMONb3gA.png",
-    //               height: 46.0.h,
-    //               width: 46.0.w,
-    //             ),
-    //           ),
-    //           SizedBox(
-    //             height: AppPadding.padding6h,
-    //           ),
-    //           Text(
-    //             "BBC",
-    //             style: AppStyles.style12Bold.copyWith(
-    //               color: AppColors.kWhiteColor,
-    //             ),
-    //           ),
-    //         ],
-    //       );
-    //     },
-    //     separatorBuilder: (context, index) {
-    //       return SizedBox(
-    //         width: AppPadding.padding12w,
-    //       );
-    //     },
-    //     itemCount: 10,
-    //   ),
-    // );
   }
 }

@@ -4,15 +4,15 @@ import 'package:souq_souda/core/usecase/base_use_case.dart';
 import 'package:souq_souda/gold/domain/entities/ingots_and_coins_entity.dart';
 import 'package:souq_souda/gold/domain/repositories/base_ingots_and_coins_repository.dart';
 
-class GetIngotsAndCoinsUseCase
+class GetIngotsUseCase
     extends BaseUseCase<List<IngotsAndCoinsEntity>, NoParameters> {
   final BaseIngotsAndCoinsRepository baseIngotsAndCoinsRepository;
 
-  GetIngotsAndCoinsUseCase(this.baseIngotsAndCoinsRepository);
+  GetIngotsUseCase(this.baseIngotsAndCoinsRepository);
 
   @override
   Future<Either<Failure, List<IngotsAndCoinsEntity>>> call(
       NoParameters parameters) async {
-    return await baseIngotsAndCoinsRepository.getIngotsAndCoins();
+    return await baseIngotsAndCoinsRepository.getIngots();
   }
 }

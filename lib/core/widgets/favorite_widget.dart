@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:souq_souda/core/constants/app_assets.dart';
 import 'package:souq_souda/core/constants/app_colors.dart';
 
-class ShareWidget extends StatelessWidget {
-  const ShareWidget({super.key});
+class BankFavoriteWidget extends StatelessWidget {
+  const BankFavoriteWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +23,13 @@ class ShareWidget extends StatelessWidget {
       child: IconButton(
         onPressed: () {},
         icon: Image.asset(
-          AppAssets.shareIcon,
-          fit: BoxFit.fill,
+          AppAssets.loveIconImage,
+          fit: BoxFit.cover,
           width: 20.0.w,
-          height: double.infinity,
+          height: 20.0.h,
         ),
+        color:Colors.white,
+
       ),
     );
   }

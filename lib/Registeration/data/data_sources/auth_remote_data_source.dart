@@ -1,7 +1,9 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:souq_souda/Registeration/data/models/auth_model.dart';
 import 'package:souq_souda/Registeration/domain/entities/auth_entity.dart';
-import 'package:souq_souda/Registeration/domain/entities/user_entity.dart';
 import 'package:souq_souda/Registeration/domain/use_cases/login_use_case.dart';
 import 'package:souq_souda/Registeration/domain/use_cases/sign_up_use_case.dart';
 import 'package:souq_souda/core/errors/exceptions.dart';
@@ -17,26 +19,14 @@ abstract class BaseAuthRemoteDataSource {
 
 class AuthRemoteDataSource implements BaseAuthRemoteDataSource {
   @override
-  Future<AuthEntity> loginWithEmailAndPassword(loginParameters) async {
+  Future<AuthEntity> loginWithEmailAndPassword(
+      LoginParameters loginParameters) async {
     final response = await Dio().post(
       ApiConstants.loginPath,
-      options: Options(
-        followRedirects: false,
-        maxRedirects: 0,
-      ),
-      data: {
-        "email": loginParameters.email,
-        "password": loginParameters.password,
-      },
+      data: loginParameters.toJson(),
     );
     if (response.statusCode == 200) {
-      return (response.data);
-    } else if (response.statusCode == 302) {
-      String redirectUrl = response.headers['location']![0];
-      print('Redirect URL: $redirectUrl');
-      Response redirectResponse = await Dio().get(redirectUrl);
-      print('Redirect Response: ${redirectResponse.data}');
-      return (response.data);
+      return AuthModel.fromJson(response.data);
     } else {
       throw ServerException(
         errorMessageModel: ErrorMessageModel.fromJson(response.data),
@@ -45,24 +35,14 @@ class AuthRemoteDataSource implements BaseAuthRemoteDataSource {
   }
 
   @override
-  Future<AuthEntity> signUpWithEmailAndPassword(signUpParameters) async {
+  Future<AuthEntity> signUpWithEmailAndPassword(
+      SignUpParameters signUpParameters) async {
     final response = await Dio().post(
       ApiConstants.registerPath,
-      options: Options(
-        headers: {
-          "Content-Type": "application/json",
-        },
-      ),
-      data: {
-        "name": signUpParameters.name,
-        "email": signUpParameters.email,
-        "password": signUpParameters.password,
-        "password_confirmation": signUpParameters.confirmPassword
-      },
+      data: signUpParameters.toJson(),
     );
-    debugPrint(response.data);
     if (response.statusCode == 200) {
-      return (response.data);
+      return AuthModel.fromJson(response.data);
     } else {
       throw ServerException(
         errorMessageModel: ErrorMessageModel.fromJson(response.data),

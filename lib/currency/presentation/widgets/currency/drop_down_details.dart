@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:souq_souda/core/constants/app_colors.dart';
 import 'package:souq_souda/core/constants/app_styles.dart';
 import 'package:souq_souda/core/networks/api_constants.dart';
@@ -16,11 +17,39 @@ class DropDownDetails extends StatefulWidget {
 }
 
 class _DropDownDetailsState extends State<DropDownDetails> {
+  SharedPreferences? prefs; // Declare SharedPreferences instance
+
+  @override
+  void initState() {
+    super.initState();
+    initSharedPreferences();
+    saveCurrencyId(21);
+  }
+
+  Future<void> initSharedPreferences() async {
+    prefs = await SharedPreferences.getInstance();
+  }
+
+  void saveCurrencyId(int currencyId) async {
+    if (prefs != null) {
+      await prefs!.setInt("currencyId", currencyId);
+      debugPrint("Setting currencyId $currencyId");
+    }
+  }
+  int? bankId;
+
+  void saveBankId(int bankId) async {
+    if (prefs != null) {
+      await prefs!.setInt("bankId", bankId);
+      debugPrint("Setting bankId $bankId");
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CurrencyDetailsCubit, CurrencyDetailsState>(
-      buildWhen: (previous, current) =>
-          previous != current && current is CurrencyDetailsSuccessState,
+      buildWhen: (previous, current) {
+        return previous != current && current is CurrencyDetailsSuccessState;
+      },
       listener: (context, state) {},
       builder: (context, state) {
         if (state is CurrencyDetailsLoadingState) {
@@ -34,12 +63,12 @@ class _DropDownDetailsState extends State<DropDownDetails> {
           );
         }
         if (state is CurrencyDetailsSuccessState) {
-          CurrencyEntity? currency = state.currencies[0];
+          CurrencyEntity? currency = state.currencies[1];
           return SizedBox(
             height: 20.0.h,
-            //width: 250.0.w,
             child: DropdownButtonFormField(
               value: currency,
+              itemHeight: 30.h,
               elevation: 0,
               items: state.currencies.map<DropdownMenuItem<CurrencyEntity>>(
                 (CurrencyEntity value) {
@@ -48,7 +77,7 @@ class _DropDownDetailsState extends State<DropDownDetails> {
                     child: Row(
                       children: [
                         CachedImage(
-                          imagePath: ApiConstants.storagePath + value.icon,
+                          imagePath: ApiConstants.storageUrl(value.icon),
                           width: 20.0.w,
                           height: 20.0.h,
                         ),
@@ -69,10 +98,12 @@ class _DropDownDetailsState extends State<DropDownDetails> {
               onChanged: (CurrencyEntity? newValue) {
                 setState(() {
                   currency = newValue;
+                  saveCurrencyId(newValue!.id);
+                  debugPrint("onChangedCurrencyValue${newValue.id}");
                 });
               },
               decoration: InputDecoration(
-                fillColor: AppColors.kYellowNorColor,
+                fillColor: AppColors.kWhiteColor,
                 filled: true,
                 focusedBorder: InputBorder.none,
                 border: InputBorder.none,

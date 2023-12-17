@@ -6,7 +6,7 @@ class IngotsAndCoinsCompanyEntity extends Equatable {
   final int coinId;
   final double workmanship;
   final double tax;
-  final int returnFees;
+  final double returnFees;
   final double? price;
   final int ingotId;
 

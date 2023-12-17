@@ -24,7 +24,7 @@ class RegisterScreen extends StatelessWidget {
                   barTitle: AppStrings.createNewAccount,
                 ),
                 SizedBox(
-                  height: AppPadding.padding50h,
+                  height:30.0.h,
                 ),
                 const InputRegisterBody(),
               ],

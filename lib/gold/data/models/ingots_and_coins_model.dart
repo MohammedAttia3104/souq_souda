@@ -19,7 +19,7 @@ class IngotsAndCoinsModel extends IngotsAndCoinsEntity {
     return IngotsAndCoinsModel(
       id: json['id'],
       baseGoldItem: json['base_gold_item'],
-      icon: json['icon'],
+      icon: json['icon'] ?? 'gold-ingots/April2023/lNZUFq1GK0bfHbGm8q2D.jpg',
       name: json['name'],
       karat: json['karat'],
       weight: json['weight'],

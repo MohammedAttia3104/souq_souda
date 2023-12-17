@@ -21,7 +21,7 @@ class PriceAndUpdateDetails extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    AppStrings.bankPriceEng,
+                    AppStrings.blackMarket,
                     style: AppStyles.style10Bold.copyWith(
                       color: AppColors.kGreyColor,
                     ),
@@ -96,3 +96,5 @@ class PriceAndUpdateDetails extends StatelessWidget {
     );
   }
 }
+
+///ToDo: Refactor through PriceWidget

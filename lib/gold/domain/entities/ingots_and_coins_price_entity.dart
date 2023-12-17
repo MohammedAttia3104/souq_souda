@@ -2,8 +2,8 @@ import 'package:equatable/equatable.dart';
 
 class IngotsAndCoinsPriceEntity extends Equatable {
   final int id;
-  final int goldCoinId;
-  final int goldIngotId;
+  final int? goldCoinId;
+  final int? goldIngotId;
 
   final double buyPrice;
   final double sellPrice;
@@ -19,8 +19,8 @@ class IngotsAndCoinsPriceEntity extends Equatable {
   @override
   List<Object> get props => [
         id,
-        goldCoinId,
-        goldIngotId,
+        goldCoinId!,
+        goldIngotId!,
         buyPrice,
         sellPrice,
       ];

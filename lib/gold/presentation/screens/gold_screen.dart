@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:souq_souda/core/constants/app_assets.dart';
 import 'package:souq_souda/core/constants/app_strings.dart';
 import 'package:souq_souda/core/constants/app_styles.dart';
 import 'package:souq_souda/core/constants/size_config.dart';
+import 'package:souq_souda/gold/presentation/controllers/gold/gold_cubit.dart';
+import 'package:souq_souda/gold/presentation/screens/coins_body.dart';
 import 'package:souq_souda/gold/presentation/widgets/company_list_view.dart';
 import 'package:souq_souda/gold/presentation/widgets/gold_grid_view.dart';
 import 'package:souq_souda/gold/presentation/widgets/gold_screen_tab_bar.dart';
 import 'package:souq_souda/gold/presentation/screens/ingots_body.dart';
+
+import '../../../core/services/services_locator.dart';
 
 class GoldScreen extends StatelessWidget {
   const GoldScreen({super.key});
@@ -24,7 +29,9 @@ class GoldScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    return BlocProvider<GoldCubit>(
+      create: (context) => sl<GoldCubit>()..getGold(),
+  child: DefaultTabController(
       length: 3,
       initialIndex: 2,
       child: Padding(
@@ -65,23 +72,18 @@ class GoldScreen extends StatelessWidget {
             child: const TabBarView(
               children: [
                 ///ToDo:Coins
-                Column(
-                  children: [
-                    CompanyListView(),
-                  ],
-                ),
-
+                CoinsBody(),
                 ///ToDo:Ingots
                 IngotsBody(),
-
                 ///ToDo:Gold
-                GoldGridView(),
+                GoldGridViewBody(),
               ],
             ),
           ),
         ),
       ),
-    );
+    ),
+);
   }
 }
 

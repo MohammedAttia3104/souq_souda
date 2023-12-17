@@ -27,6 +27,7 @@ class _LoginInputDetailsState extends State<LoginInputDetails> {
   late FocusNode emailFocusNode;
   late FocusNode passwordFocusNode;
   bool isChecked = false;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -49,113 +50,126 @@ class _LoginInputDetailsState extends State<LoginInputDetails> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AuthCubit>(
-      create: (_) => sl<AuthCubit>()
-        ..getAuthLogin(
-          email: emailController.text,
-          password: passwordController.text,
-        ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          CustomTextFormField(
-            controller: emailController,
-            hintText: AppStrings.emailAddressHint,
-            // imageIcon: AppAssets.emailIconImage,
-            keyBoardType: TextInputType.emailAddress,
-            focusNode: emailFocusNode,
-            validate: (value) => Validator.emailValidator(emailController.text),
-            onEditingComplete: () =>
-                FocusScope.of(context).requestFocus(passwordFocusNode),
-            labelTxt: AppStrings.emailAddress,
-            imageIcon: AppAssets.emailIconImage,
-          ),
-          SizedBox(
-            height: AppPadding.padding24h,
-          ),
-          CustomTextFormField(
-            controller: passwordController,
-            hintText: AppStrings.passwordHint,
-            // imageIcon: AppAssets.lockIconImage,
-            keyBoardType: TextInputType.visiblePassword,
-            focusNode: passwordFocusNode,
-            validate: (value) => Validator.passwordValidator(value),
-            onEditingComplete: () {},
-            textInputAction: TextInputAction.done,
-            isObscured: true,
-            labelTxt: AppStrings.password,
-            imageIcon: AppAssets.lockIconImage,
-          ),
-          SizedBox(
-            height: AppPadding.padding18h,
-          ),
-          Directionality(
-            textDirection: TextDirection.rtl,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Checkbox(
-                  shape: const CircleBorder(),
-                  value: isChecked,
-                  onChanged: (value) {
-                    isChecked != isChecked;
-                  },
-                ),
-                Text(
-                  AppStrings.rememberMe,
-                  style: AppStyles.style14Bold,
-                ),
-                const Spacer(),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    AppStrings.didYouForgetPassword,
-                    style: AppStyles.style14Bold.copyWith(
-                      color: AppColors.kYellowLightActColor,
+      create: (_) => sl<AuthCubit>(),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            CustomTextFormField(
+              controller: emailController,
+              hintText: AppStrings.emailAddressHint,
+              keyBoardType: TextInputType.emailAddress,
+              focusNode: emailFocusNode,
+              validate: (value) =>
+                  Validator.emailValidator(emailController.text),
+              onEditingComplete: () =>
+                  FocusScope.of(context).requestFocus(passwordFocusNode),
+              labelTxt: AppStrings.emailAddress,
+              imageIcon: AppAssets.emailIconImage,
+            ),
+            SizedBox(
+              height: AppPadding.padding24h,
+            ),
+            CustomTextFormField(
+              controller: passwordController,
+              hintText: AppStrings.passwordHint,
+              keyBoardType: TextInputType.visiblePassword,
+              focusNode: passwordFocusNode,
+              validate: (value) => Validator.passwordValidator(passwordController.text),
+              onEditingComplete: () {
+                if (_formKey.currentState!.validate()) {
+                  context.read<AuthCubit>().getAuthLogin(
+                        email: emailController.text,
+                        password: passwordController.text,
+                      );
+                }
+              },
+              textInputAction: TextInputAction.done,
+              isObscured: false,
+              labelTxt: AppStrings.password,
+              imageIcon: AppAssets.lockIconImage,
+            ),
+            SizedBox(
+              height: AppPadding.padding18h,
+            ),
+            Directionality(
+              textDirection: TextDirection.rtl,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Checkbox(
+                    shape: const CircleBorder(),
+                    value: isChecked,
+                    onChanged: (value) {
+                      isChecked != isChecked;
+                    },
+                  ),
+                  Text(
+                    AppStrings.rememberMe,
+                    style: AppStyles.style14Bold,
+                  ),
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      AppStrings.didYouForgetPassword,
+                      style: AppStyles.style14Bold.copyWith(
+                        color: AppColors.kYellowLightActColor,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: AppPadding.padding32h,
-          ),
-          BlocConsumer<AuthCubit, AuthState>(
-            listener: (context, state) {
-              // if (state is AuthLoginSuccessState) {
-              //   Navigator.push(
-              //       context,
-              //       MaterialPageRoute(
-              //         builder: (context) => const LayOutScreen(),
-              //       ));
-              // }
-            },
-            builder: (context, state) {
-              // if (state is AuthLoginLoadingState) {
-              //   return CircularIndicator(
-              //     height: 20.0.h,
-              //   );
-              // }
-              if (state is AuthLoginErrorState) {
-                return Text(
-                  state.error,
-                );
-              }
-              if (state is AuthLoginSuccessState) {
+            SizedBox(
+              height: AppPadding.padding32h,
+            ),
+            BlocConsumer<AuthCubit, AuthState>(
+              listener: (context, state) {
+                if (state is AuthLoginSuccessState) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LayOutScreen(),
+                    ),
+                  );
+                }
+              },
+              builder: (context, state) {
+                if (state is AuthLoginLoadingState) {
+                  return CircularIndicator(
+                    height: 60.0.h,
+                  );
+                }
+                if (state is AuthLoginErrorState) {
+                  return Text(
+                    state.error,
+                  );
+                }
+                if (state is AuthLoginSuccessState) {
+                  return CustomTextButton(
+                      btnText: AppStrings.login,
+                      onPressed: () {
+                        context.read<AuthCubit>().getAuthLogin(
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
+                      });
+                }
                 return CustomTextButton(
                   btnText: AppStrings.login,
                   onPressed: () {
                     context.read<AuthCubit>().getAuthLogin(
                           email: emailController.text,
-                          password: emailController.text,
+                          password: passwordController.text,
                         );
                   },
                 );
-              }
-              return const Center(child: Text('Login'),);
-            },
-          ),
-        ],
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

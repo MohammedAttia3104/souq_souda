@@ -6,8 +6,8 @@ import 'package:souq_souda/core/widgets/circular_indicator.dart';
 import 'package:souq_souda/core/widgets/single_grid_item_details.dart';
 import 'package:souq_souda/gold/presentation/controllers/gold/gold_cubit.dart';
 
-class GoldGridView extends StatelessWidget {
-  const GoldGridView({super.key});
+class GoldGridViewBody extends StatelessWidget {
+  const GoldGridViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +30,12 @@ class GoldGridView extends StatelessWidget {
                 (index) {
                   return SingleGridItemDetails(
                     itemImagePath:
-                        ApiConstants.storagePath + state.golds[index].icon,
+                        ApiConstants.storageUrl(state.golds[index].icon),
                     itemName: state.golds[index].name,
-                    buyPrice: state.golds[index].goldPrice.buyPrice,
-                    sellPrice: state.golds[index].goldPrice.price,
+                    sellAndPriceWidget: SellAndBuyPriceWidget(
+                      buyPrice: state.golds[index].goldPrice.buyPrice,
+                      sellPrice: state.golds[index].goldPrice.price,
+                    ),
                   );
                 },
               ),

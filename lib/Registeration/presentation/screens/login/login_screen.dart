@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:souq_souda/Registeration/presentation/controllers/auth_cubit.dart';
 import 'package:souq_souda/Registeration/presentation/screens/login/widgets/continue_with_google.dart';
 import 'package:souq_souda/Registeration/presentation/screens/login/widgets/login_input_details.dart';
 import 'package:souq_souda/Registeration/presentation/screens/login/widgets/login_to_text_widget.dart';
@@ -10,7 +8,6 @@ import 'package:souq_souda/core/constants/app_colors.dart';
 import 'package:souq_souda/core/constants/app_strings.dart';
 import 'package:souq_souda/core/constants/app_styles.dart';
 import 'package:souq_souda/core/constants/size_config.dart';
-import 'package:souq_souda/core/services/services_locator.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

@@ -1,8 +1,6 @@
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
-import 'package:souq_souda/Registeration/data/models/auth_model.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:souq_souda/Registeration/domain/entities/auth_entity.dart';
-import 'package:souq_souda/Registeration/domain/entities/user_entity.dart';
 import 'package:souq_souda/Registeration/domain/use_cases/login_use_case.dart';
 import 'package:souq_souda/Registeration/domain/use_cases/sign_up_use_case.dart';
 
@@ -17,15 +15,19 @@ class AuthCubit extends Cubit<AuthState> {
     this.signUpUseCase,
   ) : super(AuthInitial());
 
+  static AuthCubit get(context) => BlocProvider.of(context);
+
   void getAuthLogin({
     required String email,
     required String password,
   }) async {
     emit(AuthLoginLoadingState());
-    final result = await loginUseCase(LoginParameters(
-      email,
-      password,
-    ));
+    final result = await loginUseCase(
+      LoginParameters(
+        email: email,
+        password: password,
+      ),
+    );
     result.fold(
       (l) => emit(AuthLoginErrorState(l.message)),
       (r) => emit(AuthLoginSuccessState(r)),
@@ -38,18 +40,18 @@ class AuthCubit extends Cubit<AuthState> {
     required String password,
     required String confirmPassword,
   }) async {
-    emit(AuthLoginLoadingState());
+    emit(AuthRegisterLoadingState());
     final result = await signUpUseCase(
       SignUpParameters(
-        name,
-        email,
-        password,
-        confirmPassword,
+        name: name,
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword,
       ),
     );
     result.fold(
-      (l) => emit(AuthLoginErrorState(l.message)),
-      (r) => emit(AuthLoginSuccessState(r)),
+      (l) => emit(AuthRegisterErrorState(l.message)),
+      (r) => emit(AuthRegisterSuccessState(r)),
     );
   }
 }

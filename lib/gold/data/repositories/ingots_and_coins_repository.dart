@@ -11,9 +11,18 @@ class IngotsAndCoinsRepository extends BaseIngotsAndCoinsRepository {
   IngotsAndCoinsRepository(this.baseIngotsAndCoinsRemoteDataSource);
 
   @override
-  Future<Either<Failure, List<IngotsAndCoinsEntity>>>
-      getIngotsAndCoins() async {
-    final result = await baseIngotsAndCoinsRemoteDataSource.getIngotsAndCoins();
+  Future<Either<Failure, List<IngotsAndCoinsEntity>>> getCoins() async {
+    final result = await baseIngotsAndCoinsRemoteDataSource.getCoins();
+    try {
+      return Right(result);
+    } on ServerException catch (f) {
+      return Left(ServerFailure(f.errorMessageModel.statusMessage));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<IngotsAndCoinsEntity>>> getIngots() async {
+    final result = await baseIngotsAndCoinsRemoteDataSource.getIngots();
     try {
       return Right(result);
     } on ServerException catch (f) {

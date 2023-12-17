@@ -15,11 +15,11 @@ class IngotsAndCoinsCompanyModel extends IngotsAndCoinsCompanyEntity {
     return IngotsAndCoinsCompanyModel(
       id: json['id'],
       companyId: json['company_id'],
-      coinId: json['coin_id'],
-      workmanship: json['workmanship'],
-      tax: json['tax'],
-      returnFees: json['return_fees'],
-      ingotId: json['ingot_id'],
+      coinId: json['coin_id'] ?? 0,
+      workmanship: json['workmanship'].toDouble(),
+      tax: json['tax'].toDouble(),
+      returnFees: json['return_fees'].toDouble(),
+      ingotId: json['ingot_id'] ?? 0,
     );
   }
 }

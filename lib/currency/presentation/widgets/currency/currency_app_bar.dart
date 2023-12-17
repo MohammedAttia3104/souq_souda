@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:souq_souda/config/routes/routes_name.dart';
 import 'package:souq_souda/core/constants/app_assets.dart';
 import 'package:souq_souda/core/constants/app_colors.dart';
 import 'package:souq_souda/core/constants/app_strings.dart';
@@ -56,19 +57,24 @@ class CurrencyAppBar extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          Container(
-            width: 48.0.w,
-            height: 48.0.h,
-            padding: EdgeInsets.all(12.0.h),
-            decoration: ShapeDecoration(
-              color: const Color(0x660E0E0E),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50.0.r),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, RouteName.notifications);
+            },
+            child: Container(
+              width: 48.0.w,
+              height: 48.0.h,
+              padding: EdgeInsets.all(12.0.h),
+              decoration: ShapeDecoration(
+                color: const Color(0x660E0E0E),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0.r),
+                ),
               ),
-            ),
-            child: Image.asset(
-              AppAssets.notificationIcon,
-              color: AppColors.kWhiteColor,
+              child: Image.asset(
+                AppAssets.notificationIcon,
+                color: AppColors.kWhiteColor,
+              ),
             ),
           ),
         ],

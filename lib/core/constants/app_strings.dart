@@ -62,4 +62,8 @@ abstract class AppStrings {
   ///Bank Details Screen
   static const String egyCode = 'EGP';
   static const String calculator = 'الحاسبة';
+
+  ///All Notification Screen
+  static const String notification = 'الإشعارات';
+  static const String articles = 'المقالات';
 }

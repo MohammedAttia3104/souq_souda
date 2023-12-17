@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:souq_souda/Registeration/data/data_sources/auth_remote_data_source.dart';
 import 'package:souq_souda/Registeration/domain/entities/auth_entity.dart';
 import 'package:souq_souda/Registeration/domain/repositories/base_auth_repository.dart';
@@ -17,6 +18,8 @@ class AuthRepository extends BaseAuthRepository {
       LoginParameters parameters) async {
     final result =
         await baseAuthRemoteDataSource.loginWithEmailAndPassword(parameters);
+    debugPrint(result.toString());
+    debugPrint(result.token);
     try {
       return Right(result);
     } on ServerException catch (f) {

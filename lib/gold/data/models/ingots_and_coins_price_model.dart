@@ -14,8 +14,8 @@ class IngotsAndCoinsPriceModel extends IngotsAndCoinsPriceEntity {
       id: json['id'],
       goldCoinId: json['gold_coin_id'],
       goldIngotId: json['gold_ingot_id'],
-      buyPrice: json['buy_price'],
-      sellPrice: json['sell_price'],
+      buyPrice: json['buy_price'].toDouble(),
+      sellPrice: json['sell_price'].toDouble(),
     );
   }
 }
