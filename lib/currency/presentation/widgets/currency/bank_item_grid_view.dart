@@ -102,7 +102,7 @@ class _BankItemGridViewState extends State<BankItemGridView> {
                     state.banks[index].name == 'Central Bank of Egypt'
                         ? AppColors.kYellowNorColor
                         : AppColors.kGreyBehindColor,
-                    sellAndPriceWidget: SellAndBuyPriceWidget(
+                    sellAndPriceWidget: const SellAndBuyPriceWidget(
                       buyPrice: 200.0,
                       sellPrice: 200.0,
                     ),

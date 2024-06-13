@@ -44,7 +44,7 @@ class CoinsBody extends StatelessWidget {
                   collapsedIconColor: AppColors.kWhiteColor,
                   backgroundColor: AppColors.kGreyBehindColor,
                   border: Border.all(width: 2,color:AppColors.kYellowNorColor, ),
-                  children: [
+                  children: const [
                     ExpandedContainerDetails(
                       workManShip: 20.0,
                       totalTax: 20.0,

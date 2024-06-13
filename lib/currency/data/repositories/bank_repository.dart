@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:souq_souda/core/errors/exceptions.dart';
 import 'package:souq_souda/core/errors/failure.dart';
-import 'package:souq_souda/currency/data/data_sources/remote_bank_data_source.dart';
+import 'package:souq_souda/currency/data/data_sources/bank_remote_data_source.dart';
 import 'package:souq_souda/currency/domain/entities/bank_entity.dart';
 import 'package:souq_souda/currency/domain/repositories/base_bank_repository.dart';
 

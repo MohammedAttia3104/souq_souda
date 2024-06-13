@@ -1,7 +1,5 @@
-import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:souq_souda/Registeration/data/models/auth_model.dart';
 import 'package:souq_souda/Registeration/domain/entities/auth_entity.dart';
 import 'package:souq_souda/Registeration/domain/use_cases/login_use_case.dart';

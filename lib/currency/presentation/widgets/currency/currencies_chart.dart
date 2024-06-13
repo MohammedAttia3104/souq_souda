@@ -27,24 +27,9 @@ class _CurrenciesChartState extends State<CurrenciesChart> {
   @override
   void initState() {
     super.initState();
-    initSharedPreferences();
-    setState(() {
-      getCurrencyId();
-    });
   }
 
-  Future<void> initSharedPreferences() async {
-    prefs = await SharedPreferences.getInstance();
-  }
 
-  Future<void> getCurrencyId() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    int savedCurrencyId = prefs.getInt("currencyId")!;
-    debugPrint(savedCurrencyId.toString());
-    setState(() {
-      currencyId = savedCurrencyId;
-    });
-  }
 
 
 

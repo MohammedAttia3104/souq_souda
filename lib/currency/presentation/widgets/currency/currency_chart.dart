@@ -1,7 +1,6 @@
 import 'package:d_chart/d_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:souq_souda/core/services/services_locator.dart';
 import 'package:souq_souda/currency/presentation/controllers/currency/currency_details_cubit.dart';
 

@@ -15,9 +15,9 @@ import 'package:souq_souda/article/domain/use_cases/get_article_details_use_case
 import 'package:souq_souda/article/domain/use_cases/get_articles_use_case.dart';
 import 'package:souq_souda/article/presentation/controllers/article/article_cubit.dart';
 import 'package:souq_souda/article/presentation/controllers/article_details/article_details_cubit.dart';
-import 'package:souq_souda/currency/data/data_sources/remote_bank_data_source.dart';
-import 'package:souq_souda/currency/data/data_sources/remote_currency_data_source.dart';
-import 'package:souq_souda/currency/data/data_sources/remote_currency_filter_use_case.dart';
+import 'package:souq_souda/currency/data/data_sources/bank_remote_data_source.dart';
+import 'package:souq_souda/currency/data/data_sources/currency_remote_data_source.dart';
+import 'package:souq_souda/currency/data/data_sources/currency_remote_filter_use_case.dart';
 import 'package:souq_souda/currency/data/repositories/bank_repository.dart';
 import 'package:souq_souda/currency/data/repositories/currency_filter_repository.dart';
 import 'package:souq_souda/currency/data/repositories/currency_repository.dart';

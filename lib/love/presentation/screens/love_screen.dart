@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:souq_souda/core/constants/app_strings.dart';
 import 'package:souq_souda/core/constants/app_styles.dart';
 import 'package:souq_souda/core/constants/size_config.dart';
-import 'package:souq_souda/currency/presentation/widgets/currency/bank_item_grid_view.dart';
 
 class LoveScreen extends StatelessWidget {
   const LoveScreen({super.key});

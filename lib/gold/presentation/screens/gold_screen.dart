@@ -7,7 +7,6 @@ import 'package:souq_souda/core/constants/app_styles.dart';
 import 'package:souq_souda/core/constants/size_config.dart';
 import 'package:souq_souda/gold/presentation/controllers/gold/gold_cubit.dart';
 import 'package:souq_souda/gold/presentation/screens/coins_body.dart';
-import 'package:souq_souda/gold/presentation/widgets/company_list_view.dart';
 import 'package:souq_souda/gold/presentation/widgets/gold_grid_view.dart';
 import 'package:souq_souda/gold/presentation/widgets/gold_screen_tab_bar.dart';
 import 'package:souq_souda/gold/presentation/screens/ingots_body.dart';

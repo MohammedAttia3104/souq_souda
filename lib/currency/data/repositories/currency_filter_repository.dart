@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:souq_souda/core/errors/exceptions.dart';
 import 'package:souq_souda/core/errors/failure.dart';
-import 'package:souq_souda/currency/data/data_sources/remote_currency_filter_use_case.dart';
+import 'package:souq_souda/currency/data/data_sources/currency_remote_filter_use_case.dart';
 import 'package:souq_souda/currency/domain/entities/currency_filter_entity.dart';
 import 'package:souq_souda/currency/domain/repositories/base_currency_filter_repository.dart';
 import 'package:souq_souda/currency/domain/use_cases/draw_live_currency_chart_use_case.dart';

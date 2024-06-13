@@ -27,19 +27,6 @@ class _CompanyListViewState extends State<CompanyListView> {
   @override
   void initState() {
     super.initState();
-    initSharedPreferences();
-  }
-
-  // Initialize SharedPreferences
-  Future<void> initSharedPreferences() async {
-    prefs = await SharedPreferences.getInstance();
-  }
-
-  // Save currency ID to SharedPreferences
-  void saveCompanyId(int companyId) async {
-    if (prefs != null) {
-      await prefs!.setInt("companyId", companyId);
-    }
   }
 
   @override
@@ -67,7 +54,6 @@ class _CompanyListViewState extends State<CompanyListView> {
                       setState(() {
                         isClicked = !isClicked;
                         clickedIndex = index;
-                        saveCompanyId(state.companies[index].id);
                         debugPrint(state.companies[index].id.toString());
                       });
                     },

@@ -34,7 +34,7 @@ class BankAndBlackMarketPriceContainer extends StatelessWidget {
             SizedBox(
               height: 25.0.h,
             ),
-            const PricesInBankAndBlackMarketLastUpdate(),
+             const PricesInBankAndBlackMarketLastUpdate(),
           ],
         ),
       ),

@@ -30,8 +30,8 @@ class CustomTextButton extends StatelessWidget {
         textDirection: TextDirection.rtl,
         child: TextButton.icon(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(btnBackgroundColor),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            backgroundColor: WidgetStateProperty.all<Color>(btnBackgroundColor),
+            shape: WidgetStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(
                   14.0.r,

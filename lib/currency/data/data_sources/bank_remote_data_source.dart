@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' as bank_remote_data_source;
 import 'package:souq_souda/core/errors/exceptions.dart';
 import 'package:souq_souda/core/networks/api_constants.dart';
 import 'package:souq_souda/core/networks/error_message_model.dart';
@@ -12,7 +12,7 @@ abstract class BaseBankRemoteDataSource {
 class BankRemoteDataSource implements BaseBankRemoteDataSource {
   @override
   Future<List<BankEntity>> getBanks() async {
-    final response = await Dio().get(ApiConstants.banksPath);
+    final response = await bank_remote_data_source.Dio().get(ApiConstants.banksPath);
     if (response.statusCode == 200) {
       return (response.data as List).map((e) => BankModel.fromJson(e)).toList();
     } else {

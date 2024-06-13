@@ -9,8 +9,6 @@ import 'package:souq_souda/currency/presentation/controllers/currency/currency_d
 import 'package:souq_souda/currency/presentation/widgets/currency/bank_and_black_market_price_container.dart';
 import 'package:souq_souda/currency/presentation/widgets/currency/currencies_chart.dart';
 import 'package:souq_souda/currency/presentation/widgets/currency/currency_app_bar.dart';
-import 'package:souq_souda/currency/presentation/widgets/currency/currency_chart.dart';
-import 'package:souq_souda/currency/presentation/widgets/currency/currency_line_chart.dart';
 import 'package:souq_souda/currency/presentation/widgets/how_much_in_black_market.dart';
 
 import '../widgets/currency/bank_item_grid_view.dart';
@@ -93,7 +91,7 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
                         SizedBox(
                           height: 25.0.h,
                         ),
-                        const BankAndBlackMarketPriceContainer(),
+                        // const BankAndBlackMarketPriceContainer(),
                       ],
                     ),
                   )
@@ -115,7 +113,7 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
                 child: BlocBuilder<CurrencyDetailsCubit, CurrencyDetailsState>(
                   builder: (context, state) {
                     if (state is CurrencyDetailsSuccessState) {
-                      return BankItemGridView(
+                      return const BankItemGridView(
                         bankBuyPrice: 220,
                         bankSellPrice: 200,
                       );
@@ -123,6 +121,9 @@ class _CurrencyScreenState extends State<CurrencyScreen> {
                     return const SizedBox();
                   },
                 ),
+              ),
+              SizedBox(
+                height: 25.0.h,
               ),
             ],
           ),

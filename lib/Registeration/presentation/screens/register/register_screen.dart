@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:souq_souda/Registeration/presentation/screens/register/widgets/input_register_body.dart';
 import 'package:souq_souda/Registeration/presentation/widgets/back_app_bar.dart';
 import 'package:souq_souda/core/constants/app_strings.dart';
-import 'package:souq_souda/core/constants/size_config.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
