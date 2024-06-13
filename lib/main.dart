@@ -1,34 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
 import 'package:souq_souda/article/presentation/controllers/article/article_cubit.dart';
 import 'package:souq_souda/config/routes/app_routes.dart';
 import 'package:souq_souda/config/themes/app_themes.dart';
 import 'package:souq_souda/core/bloc_observer.dart';
 import 'package:souq_souda/core/services/services_locator.dart';
+import 'package:souq_souda/core/utils/base_constants.dart';
+import 'package:souq_souda/currency/domain/entities/bank_entity.dart';
 import 'package:souq_souda/gold/presentation/controllers/company/company_cubit.dart';
 import 'package:souq_souda/gold/presentation/controllers/ingots_and_coins/ingots_and_coins_cubit.dart';
 import 'package:souq_souda/layout/controllers/layout_cubit.dart';
 import 'package:souq_souda/layout/screens/layout_screen.dart';
 
-
 void main() async {
-  // final dio = Dio()
-  //   ..interceptors.add(PrettyDioLogger(
-  //     requestHeader: true,
-  //     requestBody: true,
-  //     responseBody: true,
-  //     responseHeader: false,
-  //     compact: false,
-  //   ));
-  //
-  // try {
-  //   await dio.get(ApiConstants.currencyPath);
-  // } catch (e) {
-  //   print(e);
-  // }
+  WidgetsFlutterBinding.ensureInitialized();
   ServicesLocator().init();
   Bloc.observer = MyBlocObserver();
+  Hive.registerAdapter(BankEntityAdapter());
+  await Hive.openBox(kBankBox);
   runApp(
     // DevicePreview(
     //   enabled: !kReleaseMode,
